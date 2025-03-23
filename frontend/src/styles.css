@@ -1,0 +1,138 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Centering the form */
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center form items */
+}
+
+/* Input Styling */
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Button Container (Centers Buttons) */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center buttons */
+    gap: 10px; /* Space between buttons */
+    margin-top: 20px;
+}
+
+/* Button Container (Centers Buttons) */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center buttons */
+    gap: 10px; /* Space between buttons */
+    margin-top: 20px;
+}
+
+/* Button Container (Centers Buttons) */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center buttons */
+    gap: 10px; /* Space between buttons */
+    margin-top: 20px;
+}
+
+/* Universal Button Styling */
+button {
+    background-color: #dc3545; /* Default red button */
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 250px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    transition: background 0.3s ease-in-out;
+    display: flex;
+    justify-content: center; /* Center text inside button */
+    align-items: center;
+}
+
+button:hover {
+    background-color: #a71d2a; /* Darker red */
+}
+
+/* Login Button */
+.login-btn {
+    background-color: #28a745; /* Green for Login */
+}
+
+.login-btn:hover {
+    background-color: #218838;
+}
+
+/* Submit Button */
+.submit-btn {
+    background-color: #28a745; /* Green for Submit */
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+}
+
+/* Back to Dashboard Button */
+.back-btn {
+    background-color: #007bff; /* Blue for back button */
+}
+
+.back-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Report Buttons */
+.report-btn {
+    background-color: #007bff; /* Yellow for Report buttons */
+    color: black;
+}
+
+.report-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Logout Button */
+.logout-btn {
+    background-color: #007bff; /* Blue for logout */
+}
+
+.logout-btn:hover {
+    background-color: #0056b3;
+}
