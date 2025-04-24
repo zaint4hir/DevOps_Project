@@ -16,14 +16,18 @@ mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => console.log("✅ MongoDB Connected!"))
-.catch(err => console.log("❌ MongoDB Error:", err));
+  .catch(err => console.log("❌ MongoDB Error:", err));
 
 // Import Routes
 const authRoutes = require("./routes/auth");
 const lostItemRoutes = require("./routes/lostItems");
+const foundItemRoutes = require("./routes/foundItems"); // <-- Added the combined foundItems.js
 
+// Use Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/lost-items", lostItemRoutes);
+app.use("/api/found-items", foundItemRoutes); // <-- Added the found items routes
 
+// Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

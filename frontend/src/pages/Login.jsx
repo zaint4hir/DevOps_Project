@@ -15,23 +15,31 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError(""); // Clear previous errors
-        setLoading(true); // Disable button while processing
-
+        setError("");
+        setLoading(true);
+    
         try {
             const res = await axios.post("http://localhost:5000/api/auth/login", user);
-            
-            // Store token & userId in localStorage
+    
+            // Store values
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("userId", res.data.user.id);
-            
-            navigate("/dashboard"); // Redirect to dashboard
+            localStorage.setItem("role", res.data.user.role); // Store role
+    
+            // Redirect based on role
+            if (res.data.user.role === "admin") {
+                navigate("/admin-dashboard");
+            } else {
+                navigate("/dashboard");
+            }
+    
         } catch (err) {
-            setError(err.response?.data?.msg || "Something went wrong. Please try again."); // Set error message
+            setError(err.response?.data?.msg || "Something went wrong. Please try again.");
         } finally {
-            setLoading(false); // Enable button again
+            setLoading(false);
         }
     };
+    
 
     return (
         <div className="container">

@@ -136,3 +136,11 @@ button:hover {
 .logout-btn:hover {
     background-color: #0056b3;
 }
+.found-item-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 1rem auto;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
