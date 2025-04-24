@@ -4,12 +4,14 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const path = require("path");
 
+
 dotenv.config();
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Serve uploaded images
+
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
@@ -27,6 +29,8 @@ const foundItemRoutes = require("./routes/foundItems"); // <-- Added the combine
 app.use("/api/auth", authRoutes);
 app.use("/api/lost-items", lostItemRoutes);
 app.use("/api/found-items", foundItemRoutes); // <-- Added the found items routes
+app.use("/api/matches", require("./routes/matches"));
+
 
 // Start Server
 const PORT = process.env.PORT || 5000;

@@ -7,6 +7,10 @@ import ReportFound from "./pages/ReportFound"; // Import the new page for report
 import SearchForLostItem from "./pages/SearchForLostItem";  
 import SearchForFoundItem from "./pages/SearchForFoundItem";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminReports from "./pages/AdminReports"; // <-- make sure this exists
+import ViewClaimHistory from "./pages/ViewClaimHistory";
+
+
 
 
 
@@ -38,6 +42,12 @@ function App() {
             <Route path="/search-found" element={<SearchForFoundItem />} />
 
             <Route path="/admin-dashboard" element={<AdminDashboard />} />
+            
+            <Route path="/admin/reports" element={<AdminReports />} />
+
+            <Route path="/admin/claim-history" element={<ViewClaimHistory />} />
+        
+
 
         </Routes>
     );

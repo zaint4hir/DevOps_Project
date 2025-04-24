@@ -47,5 +47,16 @@ router.post("/login", async (req, res) => {
         res.status(500).json({ msg: "Server error" });
     }
 });
+// Get user details by userId (you may need this for the frontend to fetch the user info)
+router.get("/user/:userId", async (req, res) => {
+    try {
+        const user = await User.findById(req.params.userId).select("name email role"); // Only fetch name, email, and role
+        if (!user) return res.status(404).json({ msg: "User not found" });
+
+        res.json(user);
+    } catch (err) {
+        res.status(500).json({ msg: "Server error" });
+    }
+});
 
 module.exports = router;

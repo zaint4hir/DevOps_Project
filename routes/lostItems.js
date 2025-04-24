@@ -66,5 +66,21 @@ router.post("/report", upload.single("image"), async (req, res) => {
         res.status(500).json({ msg: "Server error", error: err.message });
     }
 });
+// Route to delete a Lost Item by ID (DELETE /api/lost-items/:id)
+router.delete("/:id", async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const deletedItem = await LostItem.findByIdAndDelete(id);
+
+        if (!deletedItem) {
+            return res.status(404).json({ message: "Lost item not found" });
+        }
+
+        res.json({ message: "Lost item deleted successfully" });
+    } catch (err) {
+        res.status(500).json({ message: "Server Error", error: err.message });
+    }
+});
 
 module.exports = router;

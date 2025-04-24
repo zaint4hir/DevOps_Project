@@ -74,5 +74,20 @@ router.get("/search", async (req, res) => {
         res.status(500).json({ message: "Server Error", error: err.message });
     }
 });
+router.delete("/:id", async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const deletedItem = await FoundItem.findByIdAndDelete(id);
+
+        if (!deletedItem) {
+            return res.status(404).json({ message: "Found item not found" });
+        }
+
+        res.json({ message: "Found item deleted successfully" });
+    } catch (err) {
+        res.status(500).json({ message: "Server Error", error: err.message });
+    }
+});
 
 module.exports = router;
