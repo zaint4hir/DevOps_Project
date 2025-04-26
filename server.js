@@ -22,7 +22,7 @@ mongoose.connect(process.env.MONGO_URI, {
 
 // Import Routes
 const authRoutes = require("./routes/auth");
-const lostItemRoutes = require("./routes/lostItems");
+const lostItemRoutes = require("./routes/lostitems");
 const foundItemRoutes = require("./routes/foundItems"); // <-- Added the combined foundItems.js
 
 // Use Routes
@@ -30,6 +30,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/lost-items", lostItemRoutes);
 app.use("/api/found-items", foundItemRoutes); // <-- Added the found items routes
 app.use("/api/matches", require("./routes/matches"));
+app.use("/api/announcements", require("./routes/announcements"));
 
 
 // Start Server

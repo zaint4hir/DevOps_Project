@@ -83,4 +83,41 @@ router.delete("/:id", async (req, res) => {
     }
 });
 
+
+router.get("/reports-per-month", async (req, res) => {
+    try {
+        const lostReports = await LostItem.aggregate([
+            {
+                $group: {
+                    _id: { $month: "$createdAt" },
+                    count: { $sum: 1 }
+                }
+            }
+        ]);
+
+        res.json({ lostReports });
+    } catch (err) {
+        res.status(500).json({ error: "Failed to fetch lost item reports per month." });
+    }
+});
+
+router.get("/heatmap", async (req, res) => {
+    try {
+        const locations = await LostItem.aggregate([
+            {
+                $group: {
+                    _id: { $toLower: "$location" }, // Normalize case
+                    count: { $sum: 1 }
+                }
+            },
+            { $sort: { count: -1 } }, // Most frequent first
+            { $limit: 10 } // Return top 10
+        ]);
+
+        res.json({ locations });
+    } catch (err) {
+        res.status(500).json({ error: "Failed to generate lost item location heatmap." });
+    }
+});
+
 module.exports = router;

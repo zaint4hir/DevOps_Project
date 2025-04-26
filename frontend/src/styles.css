@@ -389,3 +389,68 @@ button:hover {
 .back-btn-1:hover {
     background-color: #0056b3;
 }
+.analytics-container1 {
+    max-width: 1200px;
+    margin: 2rem auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.analytics-section1 {
+    margin-bottom: 3rem;
+}
+
+.analytics-card1 {
+    background-color: #e3f2fd;
+    padding: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.analytics-graph1 {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.heatmap-table1 {
+    overflow-x: auto;
+}
+
+.styled-table1 {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.styled-table1 th, .styled-table1 td {
+    padding: 10px 20px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.styled-table1 th {
+    background-color: #1976d2;
+    color: white;
+}
+
+.button-container1 {
+    text-align: center;
+}
+
+.back-btn1 {
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.back-btn1:hover {
+    background-color: #115293;
+}
