@@ -72,3 +72,4 @@ const ReportLost = () => {
 };
 
 export default ReportLost;
+// Report lost
