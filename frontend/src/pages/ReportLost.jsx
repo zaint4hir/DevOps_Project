@@ -59,8 +59,10 @@ const ReportLost = () => {
                 <input type="text" name="title" placeholder="Item Title" onChange={handleChange} required />
                 <textarea name="description" placeholder="Description" onChange={handleChange} required />
                 <input type="text" name="location" placeholder="Last Seen Location" onChange={handleChange} required />
+                <label> Date Lost
                 <input type="date" name="dateLost" onChange={handleChange} required />
-                <input type="file" name="image" accept="image/*" onChange={handleFileChange} />
+                </label>
+                <input type="file" name="image"  placeholder="imageplace" accept="image/*" onChange={handleFileChange} />
 
                 <div className="button-container">
                     <button className="submit-btn" type="submit">Submit</button>

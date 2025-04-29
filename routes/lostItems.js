@@ -89,10 +89,10 @@ router.get("/reports-per-month", async (req, res) => {
         const lostReports = await LostItem.aggregate([
             {
                 $group: {
-                    _id: { $month: "$createdAt" },
-                    count: { $sum: 1 }
+                  _id: { $month: "$createdAt" },
+                  count: { $sum: 1 }
                 }
-            }
+             }
         ]);
 
         res.json({ lostReports });

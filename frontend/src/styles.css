@@ -454,3 +454,47 @@ button:hover {
 .back-btn1:hover {
     background-color: #115293;
 }
+.announcement-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.announcement-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.announcement-card h3 {
+    margin: 0 0 10px 0;
+}
+
+.announcement-card p {
+    margin-bottom: 10px;
+}
+
+.delete-btn {
+    background-color: #ff5252;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.announcement-scrollable-container {
+    max-height: 500px;  /* adjust height as you like */
+    overflow-y: auto;
+    padding-right: 10px;
+    margin-top: 20px;
+}
+
+.announcement-card {
+    background: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}

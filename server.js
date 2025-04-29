@@ -14,12 +14,12 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Serve u
 
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => console.log("✅ MongoDB Connected!"))
-  .catch(err => console.log("❌ MongoDB Error:", err));
-
+// Connect MongoDB (only if not testing)
+if (process.env.NODE_ENV !== 'test') {
+  mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/lostandfounddb')
+    .then(() => console.log('✅ MongoDB Connected!'))
+    .catch(err => console.error('MongoDB connection error:', err));
+}
 // Import Routes
 const authRoutes = require("./routes/auth");
 const lostItemRoutes = require("./routes/lostitems");
@@ -34,5 +34,11 @@ app.use("/api/announcements", require("./routes/announcements"));
 
 
 // Start Server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+if (process.env.NODE_ENV !== 'test') {  // <-- important line
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+}
+
+
+
+module.exports = app; // <-- export the app

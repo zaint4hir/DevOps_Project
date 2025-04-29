@@ -22,6 +22,9 @@ const Dashboard = () => {
                 <button className="report-btn" onClick={() => handleNavigate("/search-found")}>
                     Search Found Items
                 </button>
+                <button className="report-btn" onClick={() => handleNavigate("/user/announcements")}>
+                    View Announcements
+                </button>
                 <button className="logout-btn" onClick={() => handleNavigate("/login")}>
                     Logout
                 </button>

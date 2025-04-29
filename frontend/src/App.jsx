@@ -10,6 +10,9 @@ import AdminDashboard from "./pages/AdminDashboard";
 import AdminReports from "./pages/AdminReports"; // <-- make sure this exists
 import ViewClaimHistory from "./pages/ViewClaimHistory";
 import AnalyticsPage from "./pages/AnalyticsPage"; // <-- make sure this exists
+import UserAnnouncements from "./pages/UserAnnouncements";
+import SendAnnouncement from "./pages/SendAnnouncement"; // <-- make sure this exists
+
 
 
 
@@ -48,6 +51,9 @@ function App() {
             <Route path="/admin/claim-history" element={<ViewClaimHistory />} />
         
             <Route path="/analytics" element={<AnalyticsPage />} />
+            <Route path="/user/announcements" element={<UserAnnouncements />} />
+
+            <Route path="/admin/announcements" element={<SendAnnouncement />} />
         </Routes>
     );
 }

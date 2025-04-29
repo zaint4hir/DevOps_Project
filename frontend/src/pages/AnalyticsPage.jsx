@@ -28,8 +28,8 @@ const AnalyticsPage = () => {
                 const matchedRes = await axios.get("http://localhost:5000/api/matches");
                 setMatchedCount(matchedRes.data.length);
 
-                const reportsRes = await axios.get("http://localhost:5000/api/lost-items/stats/reports-per-month");
-                const foundReportsRes = await axios.get("http://localhost:5000/api/found-items/stats/reports-per-month");
+                const reportsRes = await axios.get("http://localhost:5000/api/lost-items/reports-per-month");
+                const foundReportsRes = await axios.get("http://localhost:5000/api/found-items/reports-per-month");
 
                 const combinedReports = [...reportsRes.data.lostReports, ...foundReportsRes.data.foundReports];
                 const monthlyCounts = {};
@@ -41,8 +41,12 @@ const AnalyticsPage = () => {
 
                 setReportsPerMonth(monthlyCounts);
 
-                const heatmapRes = await axios.get("http://localhost:5000/api/analytics/stats/heatmap");
-                setHeatmapData(heatmapRes.data);
+                const heatmapRes = await axios.get("http://localhost:5000/api/lost-items/heatmap");
+                const parsedHeatmap = {};
+                heatmapRes.data.locations.forEach(entry => {
+                        parsedHeatmap[entry._id] = entry.count;
+                    });
+                setHeatmapData(parsedHeatmap);
             } catch (err) {
                 console.error(err);
                 setError("Failed to fetch analytics.");
