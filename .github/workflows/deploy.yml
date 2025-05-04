@@ -33,9 +33,11 @@ jobs:
 
       - name: Set up kubeconfig
         run: |
-          echo "${{ secrets.KUBECONFIG }}" > kubeconfig
-          export KUBECONFIG=$(pwd)/kubeconfig
-
+          echo "${{ secrets.KUBECONFIG }}" | base64 -d > kubeconfig
+      
       - name: Deploy to Kubernetes
+        env:
+          KUBECONFIG: ${{ github.workspace }}/kubeconfig
         run: |
           kubectl apply -f k8s/
+
