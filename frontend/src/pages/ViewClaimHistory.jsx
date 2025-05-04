@@ -11,7 +11,7 @@ const ViewClaimHistory = () => {
     useEffect(() => {
         const fetchMatches = async () => {
             try {
-                const res = await axios.get("http://localhost:5000/api/matches");
+                const res = await axios.get("/api/matches");
                 setMatches(res.data);
             } catch (err) {
                 console.error("Error fetching matches:", err);

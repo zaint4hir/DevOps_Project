@@ -41,7 +41,7 @@ const ReportFound = () => {
             formDataToSend.append("image", formData.image);
             formDataToSend.append("userId", userId);
 
-            await axios.post("http://localhost:5000/api/found-items/report", formDataToSend, {
+            await axios.post("/api/found-items/report", formDataToSend, {
                 headers: { "Content-Type": "multipart/form-data" }
             });
 

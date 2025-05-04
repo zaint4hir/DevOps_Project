@@ -15,7 +15,7 @@ const SearchForLostItem = () => {
     useEffect(() => {
         const fetchLostItems = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/api/lost-items/");
+                const response = await axios.get("/api/lost-items/");
                 setLostItems(response.data);  // Populate lost items
             } catch (err) {
                 console.error("Error fetching lost items:", err);
@@ -38,7 +38,7 @@ const SearchForLostItem = () => {
         // Fetch filtered results based on search query
         const fetchFilteredItems = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/lost-items/search?q=${e.target.value}`);
+                const response = await axios.get(`/api/lost-items/search?q=${e.target.value}`);
                 setLostItems(response.data);  // Populate filtered lost items
             } catch (err) {
                 console.error("Error fetching filtered lost items:", err);
@@ -102,7 +102,7 @@ const SearchForLostItem = () => {
                             <p><strong>Lost on:</strong> {new Date(selectedItem.dateLost).toLocaleDateString()}</p>
                             {selectedItem.image && (
                                 <img
-                                    src={`http://localhost:5000/uploads/${selectedItem.image}`}
+                                    src={`/uploads/${selectedItem.image}`}
                                     alt={selectedItem.title}
                                     className="found-item-image"
                                 />

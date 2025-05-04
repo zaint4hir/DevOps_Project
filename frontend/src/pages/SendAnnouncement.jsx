@@ -11,7 +11,7 @@ const SendAnnouncement = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://localhost:5000/api/announcements", { title, message });
+            await axios.post("/api/announcements", { title, message });
             alert("Announcement sent!");
             navigate("/admin-dashboard");
         } catch (err) {

@@ -9,7 +9,7 @@ const UserAnnouncements = () => {
     useEffect(() => {
         const fetchAnnouncements = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/api/announcements?userId=${userId}`);
+                const res = await axios.get(`/api/announcements?userId=${userId}`);
                 setAnnouncements(res.data);
             } catch (err) {
                 console.error("Error fetching announcements", err);
@@ -20,7 +20,7 @@ const UserAnnouncements = () => {
 
     const handleMarkAsRead = async (id) => {
         try {
-            await axios.post(`http://localhost:5000/api/announcements/mark-as-read/${id}`, { userId });
+            await axios.post(`/api/announcements/mark-as-read/${id}`, { userId });
             setAnnouncements(prev => prev.filter(a => a._id !== id));
         } catch (err) {
             console.error("Error marking announcement as read", err);

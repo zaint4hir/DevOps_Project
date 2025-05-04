@@ -22,7 +22,7 @@ if (process.env.NODE_ENV !== 'test') {
 }
 // Import Routes
 const authRoutes = require("./routes/auth");
-const lostItemRoutes = require("./routes/lostitems");
+const lostItemRoutes = require("./routes/lostItems");
 const foundItemRoutes = require("./routes/foundItems"); // <-- Added the combined foundItems.js
 
 // Use Routes
@@ -31,6 +31,14 @@ app.use("/api/lost-items", lostItemRoutes);
 app.use("/api/found-items", foundItemRoutes); // <-- Added the found items routes
 app.use("/api/matches", require("./routes/matches"));
 app.use("/api/announcements", require("./routes/announcements"));
+// Serve frontend (after all API routes)
+
+
+app.use(express.static(path.join(__dirname, "public")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 
 
 // Start Server

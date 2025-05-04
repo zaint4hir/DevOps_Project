@@ -15,20 +15,20 @@ const AdminReports = () => {
         const fetchItems = async () => {
             try {
                 const [lostRes, foundRes] = await Promise.all([
-                    axios.get("http://localhost:5000/api/lost-items"),
-                    axios.get("http://localhost:5000/api/found-items")
+                    axios.get("/api/lost-items"),
+                    axios.get("/api/found-items")
                 ]);
 
                 setLostItems(lostRes.data);
                 setFoundItems(foundRes.data);
 
                 const lostUserPromises = lostRes.data.map((item) =>
-                    axios.get(`http://localhost:5000/api/auth/user/${item.userId}`)
+                    axios.get(`/api/auth/user/${item.userId}`)
                 );
                 const lostUserResponses = await Promise.all(lostUserPromises);
 
                 const foundUserPromises = foundRes.data.map((item) =>
-                    axios.get(`http://localhost:5000/api/auth/user/${item.userId}`)
+                    axios.get(`/api/auth/user/${item.userId}`)
                 );
                 const foundUserResponses = await Promise.all(foundUserPromises);
 
@@ -59,8 +59,8 @@ const AdminReports = () => {
     const handleDeleteClick = async (itemId, type) => {
         try {
             const endpoint = type === "lost"
-                ? `http://localhost:5000/api/lost-items/${itemId}`
-                : `http://localhost:5000/api/found-items/${itemId}`;
+                ? `/api/lost-items/${itemId}`
+                : `/api/found-items/${itemId}`;
 
             await axios.delete(endpoint);
             if (type === "lost") {
@@ -87,7 +87,7 @@ const AdminReports = () => {
         }
 
         try {
-            await axios.post("http://localhost:5000/api/matches", {
+            await axios.post("/api/matches", {
                 lostItemId: lostItem._id,
                 foundItemId: foundItem._id,
                 lostUserId: lostItem.userId,

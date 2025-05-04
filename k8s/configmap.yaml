@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  MONGO_URI: "mongodb://mongodb-service:27017/lostandfounddb"
+  PORT: "5000"

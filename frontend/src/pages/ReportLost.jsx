@@ -41,7 +41,7 @@ const ReportLost = () => {
             formDataToSend.append("image", formData.image);
             formDataToSend.append("userId", userId); // Attach User ID
 
-            await axios.post("http://localhost:5000/api/lost-items/report", formDataToSend, {
+            await axios.post("/api/lost-items/report", formDataToSend, {
                 headers: { "Content-Type": "multipart/form-data" }
             });
 

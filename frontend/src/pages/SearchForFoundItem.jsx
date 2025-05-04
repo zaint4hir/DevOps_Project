@@ -15,7 +15,7 @@ const SearchForFoundItem = () => {
     useEffect(() => {
         const fetchFoundItems = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/api/found-items");
+                const response = await axios.get("/api/found-items");
                 setFoundItems(response.data);  // Populate found items
             } catch (err) {
                 console.error("Error fetching found items:", err);
@@ -78,7 +78,7 @@ const SearchForFoundItem = () => {
                             <p><strong>Found on:</strong> {new Date(selectedItem.dateFound).toLocaleDateString()}</p>
                             {selectedItem.image && (
                                 <img
-                                    src={`http://localhost:5000/uploads/${selectedItem.image}`}
+                                    src={`/uploads/${selectedItem.image}`}
                                     alt={selectedItem.title}
                                     className="found-item-image"
                                 />
