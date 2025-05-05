@@ -8,7 +8,7 @@ metadata:
     kubernetes.io/ingress.class: "nginx"  # Specify which Ingress controller to use
 spec:
   rules:
-    - host: argocd.localtest.me  # Adjust this to your desired domain
+    - host: argocd.localtest.me
       http:
         paths:
           - path: /
