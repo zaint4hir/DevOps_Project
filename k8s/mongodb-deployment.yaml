@@ -25,4 +25,17 @@ spec:
           mountPath: /data/db
       volumes:
       - name: mongo-data
-        emptyDir: {}
+        persistentVolumeClaim:
+          claimName: mongodb-pvc
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongodb-pvc
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
