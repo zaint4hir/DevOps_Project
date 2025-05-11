@@ -8,7 +8,6 @@ terraform {
 }
 
 provider "kubernetes" {
-  # point at your local Docker Desktop kubeconfig
   config_path = pathexpand("~/.kube/config")
 }
 
@@ -36,7 +35,7 @@ resource "kubernetes_secret" "app" {
     namespace = kubernetes_namespace.lf.metadata[0].name
   }
   data = {
-    JWT_SECRET = "eW91cl9zZWNyZXRfa2V5"  # your_base64_secret
+    JWT_SECRET = "eW91cl9zZWNyZXRfa2V5"  
   }
 }
 
@@ -92,7 +91,7 @@ resource "kubernetes_deployment" "api" {
         volume {
           name = "uploads"
           persistent_volume_claim {
-            claim_name = "uploads-pvc"  # you'll create this separately
+            claim_name = "uploads-pvc"
           }
         }
       }

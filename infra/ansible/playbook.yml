@@ -10,7 +10,7 @@
       register: tf_check
       ignore_errors: true
 
-    - name: Install Terraform (if needed) on Mac/Linux
+    - name: Install Terraform 
       when: tf_check.failed
       ansible.builtin.package:
         name: terraform
