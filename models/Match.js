@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
-const matchSchema = new mongoose.Schema({
+const matchSchema = new mongoose.Schema
+({
     lostItemId: { type: mongoose.Schema.Types.ObjectId, ref: "LostItem", required: true },
     foundItemId: { type: mongoose.Schema.Types.ObjectId, ref: "FoundItem", required: true },
     lostUserId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
