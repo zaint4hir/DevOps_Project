@@ -1,0 +1,74 @@
+- hosts: localhost
+  gather_facts: false
+
+  vars:
+    tf_dir: "{{ playbook_dir }}/../terraform"
+
+  tasks:
+    - name: Ensure Terraform is installed
+      ansible.builtin.command: terraform version
+      register: tf_check
+      ignore_errors: true
+
+    - name: Install Terraform (if needed) on Mac/Linux
+      when: tf_check.failed
+      ansible.builtin.package:
+        name: terraform
+        state: present
+
+    - name: Run Terraform Apply
+      community.general.terraform:
+        project_path: "{{ tf_dir }}"
+        state: present
+        force_init: yes
+
+    - name: Wait for deployment rollout
+      kubernetes.core.k8s_info:
+        kind: Deployment
+        namespace: lostfound
+        name: lostfound-api
+      register: deploy_info
+      until: deploy_info.resources[0].status.availableReplicas | default(0) > 0
+      retries: 10
+      delay: 6
+
+    - name: Show Service ClusterIP
+      kubernetes.core.k8s_info:
+        kind: Service
+        namespace: lostfound
+        name: lostfound-api-svc
+      register: svc_info
+
+    - debug:
+        msg: "API available at ClusterIP {{ svc_info.resources[0].spec.clusterIP }}:80"
+
+
+    - name: Deploy ArgoCD app
+      kubernetes.core.k8s:
+        state: present
+        namespace: argocd
+        definition:
+          apiVersion: argoproj.io/v1alpha1
+          kind: Application
+          metadata:
+            name: lostfound-app
+          spec:
+            project: default
+            source:
+              repoURL: https://github.com/zaint4hir/DevOps_Project
+              path: k8s
+              targetRevision: HEAD
+            destination:
+              server: https://kubernetes.default.svc
+              namespace: default
+            syncPolicy:
+              automated:
+                selfHeal: true
+                prune: true
+              syncOptions:
+                - CreateNamespace=true
+            ignoreDifferences:
+              - group: networking.k8s.io
+                kind: Ingress
+                jsonPointers:
+                  - /status
