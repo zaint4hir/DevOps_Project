@@ -99,7 +99,7 @@ resource "kubernetes_deployment" "api" {
   }
 }
 
-# service
+# service 
 resource "kubernetes_service" "api" {
   metadata {
     name      = "lostfound-api-svc"

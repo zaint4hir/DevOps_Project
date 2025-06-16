@@ -3,7 +3,7 @@
 
   vars:
     tf_dir: "{{ playbook_dir }}/../terraform"
-
+  // Tasks 
   tasks:
     - name: Ensure Terraform is installed
       ansible.builtin.command: terraform version

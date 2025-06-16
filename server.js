@@ -13,7 +13,7 @@ app.use(cors());
 app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Serve uploaded images
 
 
-// Connect to MongoDB
+// Connect to MongoDB for database
 // Connect MongoDB (only if not testing)
 if (process.env.NODE_ENV !== 'test') {
   mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/lostandfounddb')
